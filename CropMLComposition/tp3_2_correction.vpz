@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<vle_project version="1.0" date="" author="Gauthier Quesnel">
+ <structures>
+   <model width="300" height="300" x="0" y="0" name="top" type="coupled">
+   <in/>
+   <out/>
+  <submodels>
+    <model observables="oMeteo" conditions="cBegin,cMeteo" width="78" dynamics="dMeteo" height="48" y="76" x="50" name="meteo" type="atomic">
+     <in/>
+     <out>
+      <port name="TN"/>
+      <port name="TX"/>
+     </out>
+    </model>
+    <model observables="obsThermalTime" conditions="condThermalTime" width="50" dynamics="dynThermalTime" height="50" y="77" x="178" name="ThermalTime" type="atomic">
+     <in>
+   <port name="Tmin"/>
+   <port name="Tmax"/>
+  </in>
+     <out>
+   <port name="ThermTime"/>
+  </out>
+    </model>
+    <model observables="obsRootGrowth" conditions="condRootGrowth" width="50" dynamics="dynRootGrowth" height="50" y="130" x="413" name="RootGrowth" type="atomic">
+     <in>
+   <port name="ThermTime"/>
+  <port name="RootDepth"/>
+     </in>
+     <out>
+   <port name="RootDepthDelta"/>
+   <port name="RootDepth"/>
+   <port name="maxDepth"/>
+   <port name="growthRate"/>
+  </out>
+    </model>
+    <model observables="" conditions="cBegin" width="50" dynamics="dArvicolaTerrestris" height="50" y="243" x="169" name="ArvicolaTerrestris" type="atomic">
+     <in/>
+     <out>
+      <port name="RootDepth"/>
+     </out>
+    </model>
+   </submodels>
+   <connections>
+    <connection type="internal">
+     <origin model="meteo" port="TN"/>
+     <destination model="ThermalTime" port="Tmin"/>
+    </connection>
+    <connection type="internal">
+     <origin model="meteo" port="TX"/>
+     <destination model="ThermalTime" port="Tmax"/>
+    </connection>
+    <connection type="internal">
+     <origin model="ThermalTime" port="ThermTime"/>
+     <destination model="RootGrowth" port="ThermTime"/>
+    </connection>
+    <connection type="internal">
+     <origin model="ArvicolaTerrestris" port="RootDepth"/>
+     <destination model="RootGrowth" port="RootDepth"/>
+    </connection>
+   </connections>
+  </model>
+ </structures>
+ <dynamics>
+ <dynamic library="MeteoReader" package="record.meteo" name="dMeteo"/>
+  <dynamic library="ThermalTime" package="tp3_2_correction" name="dynThermalTime"/>
+  <dynamic library="RootGrowth" package="tp3_2_correction" name="dynRootGrowth"/>
+  <dynamic library="ArvicolaTerrestris" package="tp3_2_correction" name="dArvicolaTerrestris"/>
+ </dynamics>
+ <experiment name="test" seed="123456789">
+   <conditions>
+    <condition name="simulation_engine">
+     <port name="begin">
+      <double>0.0</double>
+     </port>
+     <port name="duration">
+      <double>360</double>
+     </port>"
+    </condition>
+   <condition name="cBegin">
+    <port name="begin_date">
+     <string>2006-09-01</string>
+    </port>
+   </condition>
+   <condition name="cMeteo">
+    <port name="meteo_type">
+     <string>agroclim</string>
+    </port>
+    <port name="PkgName">
+     <string>tp3_2_correction</string>
+    </port>
+    <port name="meteo_file">
+	<string>31035002.csv</string>
+      </port>
+   </condition>
+   <condition name="condThermalTime">
+   <port name="sync_Tmin">
+    <integer>1</integer>
+   </port>
+   <port name="sync_Tmax">
+    <integer>1</integer>
+   </port>
+  </condition>
+   <condition name="condRootGrowth">
+   <port name="sync_ThermTime">
+    <integer>1</integer>
+   </port>
+   <port name="init_value_maxDepth">
+    <double>1300</double>
+   </port>
+   <port name="init_value_growthRate">
+    <double>0.4</double>
+   </port>
+  </condition>
+  </conditions>
+  <views>
+   <outputs>
+    <output format="local" plugin="storage" package="vle.output" location="" name="view">
+     <map>
+      <key name="inc_columns">
+       <integer>10</integer>
+      </key>
+      <key name="header">
+       <string>top</string>
+      </key>
+      <key name="rows">
+       <integer>15</integer>
+      </key>
+      <key name="columns">
+       <integer>15</integer>
+      </key>
+      <key name="inc_rows">
+       <integer>10</integer>
+      </key>
+     </map>
+    </output>
+   </outputs>
+   <view timestep="1" name="view" output="view" type="timed"/>
+   <observables>
+    <observable name="oMeteo">
+     <port name="TN">
+      <attachedview name="view"/>
+     </port>
+     <port name="TX">
+      <attachedview name="view"/>
+     </port>
+    </observable>
+    <observable name="obsThermalTime">
+   <port name="ThermTime">
+      <attachedview name="view"/>
+     </port>
+  </observable>
+    <observable name="obsRootGrowth">
+   <port name="RootDepthDelta">
+      <attachedview name="view"/>
+     </port>
+   <port name="RootDepth">
+      <attachedview name="view"/>
+     </port>
+   <port name="maxDepth">
+      <attachedview name="view"/>
+     </port>
+   <port name="growthRate">
+      <attachedview name="view"/>
+     </port>
+  </observable>
+   </observables>
+  </views>
+ </experiment>
+</vle_project>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<vle_project version="1.0" author="Gauthier Quesnel" date="">&#xd;
+ <structures>&#xd;
+   <model y="0" x="0" name="top" height="300" width="300" type="coupled">&#xd;
+   <in/>&#xd;
+   <out/>&#xd;
+  <submodels>
+    <model y="109" x="53" observables="" dynamics="" name="Empty" height="50" conditions="" width="50" type="atomic">
+     <in/>
+	 <out/>
+    </model>
+   </submodels>
+   <connections/>
+  </model>&#xd;
+ </structures>&#xd;
+ <dynamics>&#xd;
+ </dynamics>&#xd;
+ <experiment name="test" seed="123456789">&#xd;
+   <conditions>&#xd;
+    <condition name="simulation_engine">&#xd;
+     <port name="begin">&#xd;
+      <double>0.0</double>&#xd;
+     </port>&#xd;
+     <port name="duration">&#xd;
+      <double>1.0</double>&#xd;
+     </port>"&#xd;
+    </condition>&#xd;
+   </conditions>&#xd;
+  <views>&#xd;
+   <outputs>&#xd;
+    <output location="" plugin="storage" name="view" package="vle.output" format="local">&#xd;
+     <map>&#xd;
+      <key name="columns">&#xd;
+       <integer>15</integer>&#xd;
+      </key>&#xd;
+      <key name="header">&#xd;
+       <string>top</string>&#xd;
+      </key>&#xd;
+      <key name="inc_columns">&#xd;
+       <integer>10</integer>&#xd;
+      </key>&#xd;
+      <key name="inc_rows">&#xd;
+       <integer>10</integer>&#xd;
+      </key>&#xd;
+      <key name="rows">&#xd;
+       <integer>15</integer>&#xd;
+      </key>&#xd;
+     </map>&#xd;
+    </output>&#xd;
+   </outputs>&#xd;
+   <view timestep="1" output="view" name="view" type="timed"/>&#xd;
+   <observables/>&#xd;
+  </views>&#xd;
+ </experiment>&#xd;
+</vle_project>

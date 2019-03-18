@@ -1,0 +1,89 @@
+<model y="109" x="53" observables="" name="EnergyBalance" height="50" conditions="" width="50" type="coupled">
+  <Model>
+    <submodels>
+      <Submodel name="NetRadiation"/>
+      <Submodel name="NetRadiationEquivalentEvaporation"/>
+      <Submodel name="PriestlyTaylor"/>
+      <Submodel name="Conductance"/>
+      <Submodel name="DiffusionLimitedEvaporation"/>
+      <Submodel name="Penman"/>
+      <Submodel name="PtSoil"/>
+      <Submodel name="SoilEvaporation"/>
+      <Submodel name="EvapoTranspiration"/>
+      <Submodel name="SoilHeatFlux"/>
+      <Submodel name="PotentialTranspiration"/>
+      <Submodel name="CropHeatFlux"/>
+      <Submodel name="CanopyTemperature"/>
+    </submodels>
+  </Model>
+  <Connections>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+    <connection type="internal">
+      <origin model="CropHeatFlux" port="cropHeatFlux"/>
+      <destination model="CanopyTemperature" port="cropHeatFlux"/>
+    </connection>
+  </Connections>
+</model>
